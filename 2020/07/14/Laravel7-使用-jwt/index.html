@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f">
+  <meta name="description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&amp;#x2F">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2020-07-14-Laravel7 使用 jwt">
 <meta property="og:url" content="https://jackwong7.github.io/blog/2020/07/14/Laravel7-%E4%BD%BF%E7%94%A8-jwt/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f">
+<meta property="og:description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&amp;#x2F">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T14:27:06.000Z">
-<meta property="article:modified_time" content="2020-07-14T15:50:28.354Z">
+<meta property="article:modified_time" content="2020-07-14T16:12:55.625Z">
 <meta property="article:author" content="JackWOng">
 <meta property="article:tag" content="Laravel">
 <meta property="article:tag" content="PHP">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 22:27:06 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:27:06" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -194,7 +200,7 @@
 <li><p>\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;= 7.2.5</p>
 </li>
 <li><pre><code>composer create-project --prefer-dist laravel/laravel jwtdemo
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
 composer require tymon/jwt-auth
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Publish the config</span><br></pre></td></tr></table></figure>
 php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\LaravelServiceProvider&quot;
@@ -206,7 +212,7 @@ sql：
 </ol>
 <p>CREATE TABLE <code>users</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
 <p>CREATE TABLE <code>admins</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
 <p>&lt;?php</p>
 <p>namespace App\Models;</p>
 <p>use Illuminate\Foundation\Auth\User as Authenticatable;<br>use Tymon\JWTAuth\Contracts\JWTSubject;</p>

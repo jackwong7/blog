@@ -168,10 +168,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 23:35:20 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T23:35:20+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 23:35:20" itemprop="dateCreated datePublished" datetime="2020-07-14T23:35:20+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -186,7 +192,7 @@
       
           <p>1.首先去官网下载资源</p>
 <p>链接：<a href="https://froala.com/wysiwyg-editor/" target="_blank" rel="noopener">Froala编辑器介绍网页</a></p>
-<p><img src="images/post/2020/07/f8875b16e97c092a67826dc0c6650feb.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/f8875b16e97c092a67826dc0c6650feb.png" alt="img"></p>
 <p>2.将css，js引入到项目中，我这里是把所有的css，js都引入了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;froala_editor.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;froala_style.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;code_view.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;draggable.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;colors.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;emoticons.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;image_manager.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;image.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;line_breaker.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;table.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;char_counter.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;video.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;fullscreen.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;file.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;quick_insert.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;help.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;third_party&#x2F;spell_checker.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;special_characters.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;froala_editor.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;align.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;char_counter.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;code_beautifier.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;code_view.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;colors.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;draggable.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;emoticons.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;entities.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;file.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;font_size.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;font_family.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;fullscreen.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;image.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;image_manager.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;line_breaker.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;inline_style.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;link.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;lists.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;paragraph_format.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;paragraph_style.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;quick_insert.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;quote.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;table.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;save.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;url.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;video.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;help.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;print.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;third_party&#x2F;spell_checker.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;special_characters.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;word_paste.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;languages&#x2F;zh_cn.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
@@ -204,7 +210,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.code&#123;</span><br><span class="line">    display: block;</span><br><span class="line">    white-space: pre;</span><br><span class="line">    box-shadow: 0 1px 1px rgba(0,0,0,.075);</span><br><span class="line">    padding: 1em;</span><br><span class="line">    margin: .5em 0 2em;</span><br><span class="line">    overflow: auto;</span><br><span class="line">    -webkit-overflow-scrolling: touch;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">    color: #090910;</span><br><span class="line">    background: #fbfbfd;</span><br><span class="line">    text-align: left;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    word-break: normal;</span><br><span class="line">    word-wrap: normal;</span><br><span class="line">    -moz-tab-size: 4;</span><br><span class="line">    tab-size: 4;</span><br><span class="line">    -webkit-hyphens: none;</span><br><span class="line">    -ms-hyphens: none;</span><br><span class="line">    hyphens: none;</span><br><span class="line">    font-size: .8rem;</span><br><span class="line">    font-weight: 500;</span><br><span class="line">    line-height: 1.9;</span><br><span class="line">    font-family: Consolas,source-code-pro,monospace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>7.最终效果图 </p>
-<p><img src="images/post/2020/07/383c9b755e5ef7779480f0079d407ce0.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/383c9b755e5ef7779480f0079d407ce0.png" alt="img"></p>
 
       
     </div>
@@ -313,10 +319,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 22:32:50 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:50+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:32:50" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:50+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -330,10 +342,10 @@
 
       
           <p>Slice变量本身指向3个东西，array，len，cap，array是一个指针，len是当前长度，cap是这个最大长度，当cap改变时会重新生成一个新的array指针</p>
-<p><img src="images/post/2020/07/159d1c826cdb02ea696f72ab84959290.png" alt="img"></p>
-<p><img src="images/post/2020/07/f75dc324ca4e20bc73b47adb80948853.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/159d1c826cdb02ea696f72ab84959290.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/f75dc324ca4e20bc73b47adb80948853.png" alt="img"></p>
 <p>当cap发生变化时，如下图所示</p>
-<p><img src="images/post/2020/07/0fde8e784fe8b440979399a9d5a65ea7.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/0fde8e784fe8b440979399a9d5a65ea7.png" alt="img"></p>
 <p><strong>代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">   s1 :&#x3D; []int&#123;1,2,3,4&#125;</span><br><span class="line">   s2 :&#x3D; s1 &#x2F;&#x2F; s2 复制了 s1 的slice指针地址</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s1 &#x3D; append(s1,5) &#x2F;&#x2F; 当修改了 s1 的cap长度时，s1 会拷贝一个新的slice出来</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s2 &#x3D; append(s2,6) &#x2F;&#x2F; 当修改了 s2 的cap长度时，s2 会拷贝一个新的slice出来</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s2 &#x3D; append(s2,6) &#x2F;&#x2F; 当只是增加&#x2F;减少 s2 的len长度时，cap值不变，s2 指针后面的值会修改掉</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s3 :&#x3D; s1[:3] &#x2F;&#x2F; s3 只是拿了 s1 的指针，并修改了 len值，但是cap值不变 所以 s3 地址 等于 s1 地址</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line">   fmt.Printf(&quot;s3&#x3D;%v, s3 array pointer is %p, len(s3)&#x3D;%d, cap(s3)&#x3D;%d\n\n&quot;,s3,s3,len(s3),cap(s3))</span><br><span class="line"></span><br><span class="line">   s3 &#x3D; append(s3,7) &#x2F;&#x2F; 当s3 修改了里面的值，s1 也会跟着改，但指针不变</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line">   fmt.Printf(&quot;s3&#x3D;%v, s3 array pointer is %p, len(s3)&#x3D;%d, cap(s3)&#x3D;%d\n\n&quot;,s3,s3,len(s3),cap(s3))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -383,10 +395,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 22:32:11 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:11+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:32:11" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:11+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -402,13 +420,13 @@
           <p>\1. 大家可以去我的网盘自行下载然后安装</p>
 <p>链接：<a href="https://share.weiyun.com/f3Fr2IGB" target="_blank" rel="noopener">https://share.weiyun.com/f3Fr2IGB</a> 密码：ptbav6</p>
 <p>\2. 将kengen这个压缩包里面的文件放到 navicat15的安装目录中并打开，且将windows断网</p>
-<p><img src="images/post/2020/07/3f33247aef1bdee069b615c6f0ccf6a6.png" alt="img">按图片上的进行操作</p>
-<p><img src="images/post/2020/07/315a7467c12b6ca4f258dc14e6bafaf7.png" alt="img">去注册</p>
-<p><img src="images/post/2020/07/0c6c82b31b81ca0baea623f4a7e61a64.png" alt="img">这一步记得将计算机断网</p>
-<p><img src="images/post/2020/07/90993692dce4a8fdf4edf3d6b510b496.png" alt="img">断网后才可以手动激活</p>
-<p><img src="images/post/2020/07/3dd5e4782143be7d0a197747a8b79a4d.png" alt="img">按图片上的操作</p>
-<p><img src="images/post/2020/07/2368696f4453bdfe809f278fe1731b4b.png" alt="img">然后提示已激活</p>
-<p><img src="images/post/2020/07/81b0021a297572a052ff028e73cf3f7c.png" alt="img">现在可以正常的使用了</p>
+<p><img src="/blog/images/post/2020/07/3f33247aef1bdee069b615c6f0ccf6a6.png" alt="img">按图片上的进行操作</p>
+<p><img src="/blog/images/post/2020/07/315a7467c12b6ca4f258dc14e6bafaf7.png" alt="img">去注册</p>
+<p><img src="/blog/images/post/2020/07/0c6c82b31b81ca0baea623f4a7e61a64.png" alt="img">这一步记得将计算机断网</p>
+<p><img src="/blog/images/post/2020/07/90993692dce4a8fdf4edf3d6b510b496.png" alt="img">断网后才可以手动激活</p>
+<p><img src="/blog/images/post/2020/07/3dd5e4782143be7d0a197747a8b79a4d.png" alt="img">按图片上的操作</p>
+<p><img src="/blog/images/post/2020/07/2368696f4453bdfe809f278fe1731b4b.png" alt="img">然后提示已激活</p>
+<p><img src="/blog/images/post/2020/07/81b0021a297572a052ff028e73cf3f7c.png" alt="img">现在可以正常的使用了</p>
 
       
     </div>
@@ -635,10 +653,16 @@ class JWTCustomUserProvider extends EloquentUserProvider
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 22:29:36 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:29:36+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:29:36" itemprop="dateCreated datePublished" datetime="2020-07-14T22:29:36+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -654,15 +678,15 @@ class JWTCustomUserProvider extends EloquentUserProvider
           <p>\1. 首先设置yum源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/post/2020/07/47a25840c7895ff923a72f29487ecc0d.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/47a25840c7895ff923a72f29487ecc0d.png" alt="img"></p>
 <p>\2. 检查是否更新成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/post/2020/07/d237c67d50235cb738bf799f8875f1cb.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/d237c67d50235cb738bf799f8875f1cb.png" alt="img"></p>
 <p>3.安装docker，我这里就不指定版本了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker-ce -y</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/post/2020/07/6ee12e604f64bd852d53ac9e82bd6071.png" alt="img"></p>
+<p><img src="/blog/images/post/2020/07/6ee12e604f64bd852d53ac9e82bd6071.png" alt="img"></p>
 <p>4.运行且设置开机启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker &amp;&amp; systemctl enable docker</span><br></pre></td></tr></table></figure>
       
@@ -706,10 +730,16 @@ class JWTCustomUserProvider extends EloquentUserProvider
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-14 22:27:06 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:27:06" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+              </span>
 
           
 
@@ -726,7 +756,7 @@ class JWTCustomUserProvider extends EloquentUserProvider
 <li><p>\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;= 7.2.5</p>
 </li>
 <li><pre><code>composer create-project --prefer-dist laravel/laravel jwtdemo
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
 composer require tymon/jwt-auth
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Publish the config</span><br></pre></td></tr></table></figure>
 php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\LaravelServiceProvider&quot;
@@ -738,7 +768,7 @@ sql：
 </ol>
 <p>CREATE TABLE <code>users</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
 <p>CREATE TABLE <code>admins</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
 <p>&lt;?php</p>
 <p>namespace App\Models;</p>
 <p>use Illuminate\Foundation\Auth\User as Authenticatable;<br>use Tymon\JWTAuth\Contracts\JWTSubject;</p>
