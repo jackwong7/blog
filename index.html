@@ -145,6 +145,151 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="JackWOng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="post-title-link" itemprop="url">beego加入Froala富文本编辑器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-14 23:35:20 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T23:35:20+08:00">2020-07-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.首先去官网下载资源</p>
+<p>链接：<a href="https://froala.com/wysiwyg-editor/" target="_blank" rel="noopener">Froala编辑器介绍网页</a></p>
+<p><img src="images/post/2020/07/f8875b16e97c092a67826dc0c6650feb.png" alt="img"></p>
+<p>2.将css，js引入到项目中，我这里是把所有的css，js都引入了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;froala_editor.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;froala_style.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;code_view.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;draggable.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;colors.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;emoticons.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;image_manager.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;image.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;line_breaker.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;table.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;char_counter.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;video.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;fullscreen.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;file.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;quick_insert.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;help.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;third_party&#x2F;spell_checker.css&quot;&gt;</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;css&#x2F;plugins&#x2F;special_characters.css&quot;&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;froala_editor.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;align.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;char_counter.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;code_beautifier.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;code_view.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;colors.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;draggable.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;emoticons.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;entities.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;file.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;font_size.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;font_family.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;fullscreen.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;image.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;image_manager.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;line_breaker.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;inline_style.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;link.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;lists.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;paragraph_format.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;paragraph_style.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;quick_insert.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;quote.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;table.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;save.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;url.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;video.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;help.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;print.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;third_party&#x2F;spell_checker.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;special_characters.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;plugins&#x2F;word_paste.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;static&#x2F;froala_editor_3.1.1&#x2F;js&#x2F;languages&#x2F;zh_cn.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.添加富文本html区域块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;editor&quot;&gt;</span><br><span class="line">    &lt;textarea id&#x3D;&#39;edit&#39; name&#x3D;&quot;content&quot; style&#x3D;&quot;margin-top: 30px;&quot;&gt;&#123;&#123;.post.Content&#125;&#125;&lt;&#x2F;textarea&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.配置富文本功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;这个是我自定义的按钮，用来添加代码区块的</span><br><span class="line">    FroalaEditor.DefineIcon(&#39;insertCode&#39;, &#123; NAME: &#39;plus&#39;, SVG_KEY: &#39;add&#39; &#125;);</span><br><span class="line">    FroalaEditor.RegisterCommand(&#39;insertCode&#39;, &#123;</span><br><span class="line">        title: &#39;插入代码&#39;,</span><br><span class="line">        focus: true,</span><br><span class="line">        undo: true,</span><br><span class="line">        type:&#39;dropdown&#39;,</span><br><span class="line">        refreshAfterCallback: true,</span><br><span class="line">            options: &#123;</span><br><span class="line">              &#39;bash&#39;: &#39;bash&#39;,</span><br><span class="line">              &#39;php&#39;: &#39;php&#39;,</span><br><span class="line">              &#39;golang&#39;: &#39;golang&#39;,</span><br><span class="line">              &#39;sql&#39;: &#39;sql&#39;,</span><br><span class="line">              &#39;html&#39;: &#39;html&#39;,</span><br><span class="line">              &#39;css&#39;: &#39;css&#39;,</span><br><span class="line">              &#39;java&#39;: &#39;java&#39;,</span><br><span class="line">            &#125;,</span><br><span class="line">        callback: function (cmd,val) &#123;</span><br><span class="line">            let txt &#x3D; this.selection.text();</span><br><span class="line">            if (txt &#x3D;&#x3D;&#x3D; undefined) return;</span><br><span class="line">            code &#x3D; txt.replace(&#x2F;\s+$&#x2F;, &quot;&quot;); &#x2F;&#x2F; rtrim</span><br><span class="line">            code &#x3D; $(&#39;&lt;span&#x2F;&gt;&#39;).text(code).html(); &#x2F;&#x2F; encode</span><br><span class="line"></span><br><span class="line">            var htmlCode &#x3D; &quot;&lt;pre language&#x3D;&#39;&quot; + val + &quot;&#39; class&#x3D;&#39;code&#39;&gt;&quot; + code + &quot;&lt;&#x2F;pre&gt;&lt;&#x2F;div&gt;&quot;;</span><br><span class="line">            var codeBlock &#x3D; &quot;&lt;div align&#x3D;&#39;left&#39; dir&#x3D;&#39;ltr&#39;&gt;&quot; + htmlCode + &quot;&lt;&#x2F;div&gt;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line"></span><br><span class="line">            this.html.insert(codeBlock);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    &#x2F;&#x2F;自定义区块--end</span><br><span class="line">    new FroalaEditor(&quot;#edit&quot;,&#123;</span><br><span class="line">        key: &#39;&#39;,</span><br><span class="line">        language: &#39;zh_cn&#39;,</span><br><span class="line">        height: 300,</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; disable quick insert</span><br><span class="line">        quickInsertTags: [],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;需要按钮可以参考这几个</span><br><span class="line">        &#x2F;&#x2F;&#123;moreText:&#123;buttons:</span><br><span class="line">        &#x2F;&#x2F;[&quot;bold&quot;,&quot;italic&quot;,&quot;underline&quot;,&quot;strikeThrough&quot;,&quot;subscript&quot;,&quot;superscript&quot;,&quot;fontFamily&quot;,&quot;fontSize&quot;,&quot;textColor&quot;,&quot;backgroundColor&quot;,&quot;inlineClass&quot;,&quot;inlineStyle&quot;,&quot;clearFormatting&quot;]</span><br><span class="line">        &#x2F;&#x2F;&#125;,moreParagraph:&#123;buttons:</span><br><span class="line">        &#x2F;&#x2F;[&quot;alignLeft&quot;,&quot;alignCenter&quot;,&quot;formatOLSimple&quot;,&quot;alignRight&quot;,&quot;alignJustify&quot;,&quot;formatOL&quot;,&quot;formatUL&quot;,&quot;paragraphFormat&quot;,&quot;paragraphStyle&quot;,&quot;lineHeight&quot;,&quot;outdent&quot;,&quot;indent&quot;,&quot;quote&quot;]</span><br><span class="line">        &#x2F;&#x2F;&#125;,moreRich:&#123;buttons:</span><br><span class="line">        &#x2F;&#x2F;[&quot;insertLink&quot;,&quot;insertImage&quot;,&quot;insertVideo&quot;,&quot;insertTable&quot;,&quot;emoticons&quot;,&quot;fontAwesome&quot;,&quot;specialCharacters&quot;,&quot;embedly&quot;,&quot;insertFile&quot;,&quot;insertHR&quot;]</span><br><span class="line">        &#x2F;&#x2F;&#125;,moreMisc:&#123;buttons:</span><br><span class="line">        &#x2F;&#x2F;[&quot;undo&quot;,&quot;redo&quot;,&quot;fullscreen&quot;,&quot;print&quot;,&quot;getPDF&quot;,&quot;spellChecker&quot;,&quot;selectAll&quot;,&quot;html&quot;,&quot;help&quot;]</span><br><span class="line">        &#x2F;&#x2F;,align:&quot;right&quot;,buttonsVisible:2&#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; toolbar buttons</span><br><span class="line">        toolbarButtons: [&#39;fullscreen&#39;, &#39;textColor&#39;,&#39;fontFamily&#39;,&#39;backgroundColor&#39;,&#39;bold&#39;, &#39;italic&#39;, &#39;underline&#39;, &#39;strikeThrough&#39;,&#39;insertCode&#39;,&#39;emoticons&#39;, &#39;|&#39;, &#39;paragraphFormat&#39;, &#39;fontSize&#39;, &#39;color&#39;, &#39;|&#39;, &#39;align&#39;, &#39;formatOL&#39;, &#39;formatUL&#39;, &#39;outdent&#39;, &#39;indent&#39;, &#39;quote&#39;, &#39;-&#39;, &#39;insertLink&#39;, &#39;insertFile&#39;, &#39;insertImage&#39;, &#39;insertVideo&#39;, &#39;embedly&#39;, &#39;insertTable&#39;, &#39;|&#39;, &#39;insertHR&#39;, &#39;selectAll&#39;, &#39;clearFormatting&#39;, &#39;|&#39;, &#39;spellChecker&#39;, &#39;help&#39;, &#39;html&#39;, &#39;|&#39;, &#39;undo&#39;, &#39;redo&#39;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; upload file</span><br><span class="line">        imageUploadParam: &#39;uploadname&#39;,</span><br><span class="line">        imageUploadURL: &#39;&#x2F;admin&#x2F;upload&#39;,</span><br><span class="line">        fileUploadMethod: &#39;POST&#39;,</span><br><span class="line">        fileMaxSize: 20 * 1024 * 1024,</span><br><span class="line">        fileAllowedTypes: [&#39;*&#39;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; upload image</span><br><span class="line">        imageUploadParam: &#39;uploadname&#39;,</span><br><span class="line">        imageUploadURL: &#39;&#x2F;admin&#x2F;upload&#39;,</span><br><span class="line">        imageUploadMethod: &#39;POST&#39;,</span><br><span class="line">        imageMaxSize: 5 * 1024 * 1024,</span><br><span class="line">        imageAllowedTypes: [&#39;jpeg&#39;, &#39;jpg&#39;, &#39;png&#39;, &#39;gif&#39;, &#39;bmp&#39;, &#39;svg+xml&#39;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; upload video</span><br><span class="line">        imageUploadParam: &#39;uploadname&#39;,</span><br><span class="line">        imageUploadURL: &#39;&#x2F;admin&#x2F;upload&#39;,</span><br><span class="line">        videoUploadMethod: &#39;POST&#39;,</span><br><span class="line">        videoMaxSize: 50 * 1024 * 1024,</span><br><span class="line">        videoAllowedTypes: [&#39;avi&#39;, &#39;mov&#39;, &#39;mp4&#39;, &#39;m4v&#39;, &#39;mpeg&#39;, &#39;mpg&#39;, &#39;wmv&#39;, &#39;ogv&#39;],</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>5.上传图片到后端</p>
+<p>需要注意后端返回的json url必须是  {“link”: “此次为图片地址”}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;上传接口</span><br><span class="line">func (c *AdminController) Upload() &#123;</span><br><span class="line">   result :&#x3D; make(map[string]interface&#123;&#125;)</span><br><span class="line">   path :&#x3D; &quot;.&#x2F;static&#x2F;upload&#x2F;&quot; + time.Now().Format(&quot;2006&#x2F;01&#x2F;02&quot;)</span><br><span class="line">   if _, err :&#x3D; os.Stat(path); os.IsNotExist(err) &#123;</span><br><span class="line">      err :&#x3D; os.MkdirAll(path, os.ModeDir)</span><br><span class="line">      if err !&#x3D; nil &#123;</span><br><span class="line">         result[&quot;code&quot;] &#x3D; 2</span><br><span class="line">         result[&quot;message&quot;] &#x3D; &quot;上传异常&quot; + err.Error()</span><br><span class="line">         c.Data[&quot;json&quot;] &#x3D; result</span><br><span class="line">         c.ServeJSON()</span><br><span class="line">         return</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   f, h, err :&#x3D; c.GetFile(&quot;uploadname&quot;)</span><br><span class="line">   img :&#x3D; &quot;&quot;</span><br><span class="line">   if err &#x3D;&#x3D; nil &#123;</span><br><span class="line">      exStrArr :&#x3D; strings.Split(h.Filename, &quot;.&quot;)</span><br><span class="line">      exStr :&#x3D; strings.ToLower(exStrArr[len(exStrArr)-1])</span><br><span class="line">      if exStr !&#x3D; &quot;jpg&quot; &amp;&amp; exStr !&#x3D; &quot;png&quot; &amp;&amp; exStr !&#x3D; &quot;gif&quot; &#123;</span><br><span class="line">         result[&quot;code&quot;] &#x3D; 1</span><br><span class="line">         result[&quot;message&quot;] &#x3D; &quot;上传只能.jpg 或者png格式&quot;</span><br><span class="line">      &#125;</span><br><span class="line">      img &#x3D; path + &quot;&#x2F;&quot; + util.UniqueId() + &quot;.&quot; + exStr</span><br><span class="line">      err :&#x3D; c.SaveToFile(&quot;uploadname&quot;, img) &#x2F;&#x2F; 保存位置在 static&#x2F;upload, 没有文件夹要先创建</span><br><span class="line">      result[&quot;code&quot;] &#x3D; 0</span><br><span class="line">      result[&quot;message&quot;] &#x3D; &quot;上传成功&quot;</span><br><span class="line">      result[&quot;link&quot;] &#x3D; strings.TrimLeft(img, &quot;.&quot;)</span><br><span class="line">      if err !&#x3D; nil &#123;</span><br><span class="line">         result[&quot;code&quot;] &#x3D; 2</span><br><span class="line">         result[&quot;message&quot;] &#x3D; &quot;上传异常&quot; + err.Error()</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">      result[&quot;code&quot;] &#x3D; 2</span><br><span class="line">      result[&quot;message&quot;] &#x3D; &quot;上传异常&quot; + err.Error()</span><br><span class="line">   &#125;</span><br><span class="line">   defer f.Close()</span><br><span class="line">   c.Data[&quot;json&quot;] &#x3D; result</span><br><span class="line">   c.ServeJSON()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.我用到的css</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.code&#123;</span><br><span class="line">    display: block;</span><br><span class="line">    white-space: pre;</span><br><span class="line">    box-shadow: 0 1px 1px rgba(0,0,0,.075);</span><br><span class="line">    padding: 1em;</span><br><span class="line">    margin: .5em 0 2em;</span><br><span class="line">    overflow: auto;</span><br><span class="line">    -webkit-overflow-scrolling: touch;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">    color: #090910;</span><br><span class="line">    background: #fbfbfd;</span><br><span class="line">    text-align: left;</span><br><span class="line">    word-spacing: normal;</span><br><span class="line">    word-break: normal;</span><br><span class="line">    word-wrap: normal;</span><br><span class="line">    -moz-tab-size: 4;</span><br><span class="line">    tab-size: 4;</span><br><span class="line">    -webkit-hyphens: none;</span><br><span class="line">    -ms-hyphens: none;</span><br><span class="line">    hyphens: none;</span><br><span class="line">    font-size: .8rem;</span><br><span class="line">    font-weight: 500;</span><br><span class="line">    line-height: 1.9;</span><br><span class="line">    font-family: Consolas,source-code-pro,monospace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.最终效果图 </p>
+<p><img src="images/post/2020/07/383c9b755e5ef7779480f0079d407ce0.png" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="JackWOng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/14/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">Redis过期删除策略</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-14 23:33:53 / Modified: 23:38:22" itemprop="dateCreated datePublished" datetime="2020-07-14T23:33:53+08:00">2020-07-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>一、知识点</strong></p>
+<p><strong>惰性删除：</strong></p>
+<p>指某个键值过期后，此键值不会马上被删除，而是等到下次被使用的时候，才会被检查到过期，此时才能得到删除，惰性删除的缺点很明显是浪费内存。</p>
+<p><strong>定时删除：</strong></p>
+<p>每隔一段时间执行一次删除操作，并通过限制删除操作执行的时长和频率，来减少删除操作对cpu的影响。另一方面定时删除也有效的减少了因惰性删除带来的内存浪费。</p>
+<p><strong>立即删除：</strong></p>
+<p>立即删除能保证内存中数据的最大新鲜度，因为它保证过期键值会在过期后马上被删除，其所占用的内存也会随之释放。但是立即删除对cpu是最不友好的。因为删除操作会占用cpu的时间，如果刚好碰上了cpu很忙的时候，比如正在做交集或排序等计算的时候，就会给cpu造成额外的压力。</p>
+<p>二、考点剖析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Redis的过期策略是什么？</span><br><span class="line">惰性删除 + 定期删除 </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Redis怎么实现定期删除的呢？</span><br><span class="line">Redis默认每隔100ms随机抽取一些设置了过期时间的key，检查是否过期，如果过期就删除。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 为什么要随机抽取呢？</span><br><span class="line">假设Redis中有大量的key，并且都设置了过期时间，如果全量检查的话，将会耗费大量的CPU时间，这样有损Redis对外的服务性能。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 随机抽取会带来什么问题呢？</span><br><span class="line">可能导致已经过期的key还滞留在内存中，占用着内存空间。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如何解决随机抽取带来的问题呢？</span><br><span class="line">为了解决这个问题，Redis引入了惰性删除。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 什么是惰性删除呢？</span><br><span class="line">在获取某个key的时候，Redis会进行检查，如果key设置了过期时间，并且已经过期，则删除这个key，释放内存空间。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如果某些key没有触发惰性删除，也就是说经过惰性删除 + 定期删除两轮清理，依旧存在，该如何解决呢？</span><br><span class="line">这种情况，在内存不足的时候，Redis的内存淘汰策略就派上用场了。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/%E8%AE%B2%E8%A7%A3%E4%B8%80%E4%B8%8BGolang%E5%BE%88%E5%A4%9A%E4%BA%BA%E4%B8%8D%E7%90%86%E8%A7%A3%E7%9A%84Slice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +315,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-14 22:32:50 / Modified: 22:33:13" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:50+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:32:50 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:50+08:00">2020-07-14</time>
             </span>
 
           
@@ -185,10 +330,10 @@
 
       
           <p>Slice变量本身指向3个东西，array，len，cap，array是一个指针，len是当前长度，cap是这个最大长度，当cap改变时会重新生成一个新的array指针</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/11/159d1c826cdb02ea696f72ab84959290.png" alt="img"></p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/11/f75dc324ca4e20bc73b47adb80948853.png" alt="img"></p>
+<p><img src="images/post/2020/07/159d1c826cdb02ea696f72ab84959290.png" alt="img"></p>
+<p><img src="images/post/2020/07/f75dc324ca4e20bc73b47adb80948853.png" alt="img"></p>
 <p>当cap发生变化时，如下图所示</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/11/0fde8e784fe8b440979399a9d5a65ea7.png" alt="img"></p>
+<p><img src="images/post/2020/07/0fde8e784fe8b440979399a9d5a65ea7.png" alt="img"></p>
 <p><strong>代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">   s1 :&#x3D; []int&#123;1,2,3,4&#125;</span><br><span class="line">   s2 :&#x3D; s1 &#x2F;&#x2F; s2 复制了 s1 的slice指针地址</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s1 &#x3D; append(s1,5) &#x2F;&#x2F; 当修改了 s1 的cap长度时，s1 会拷贝一个新的slice出来</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s2 &#x3D; append(s2,6) &#x2F;&#x2F; 当修改了 s2 的cap长度时，s2 会拷贝一个新的slice出来</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s2 &#x3D; append(s2,6) &#x2F;&#x2F; 当只是增加&#x2F;减少 s2 的len长度时，cap值不变，s2 指针后面的值会修改掉</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line"></span><br><span class="line">   s3 :&#x3D; s1[:3] &#x2F;&#x2F; s3 只是拿了 s1 的指针，并修改了 len值，但是cap值不变 所以 s3 地址 等于 s1 地址</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line">   fmt.Printf(&quot;s3&#x3D;%v, s3 array pointer is %p, len(s3)&#x3D;%d, cap(s3)&#x3D;%d\n\n&quot;,s3,s3,len(s3),cap(s3))</span><br><span class="line"></span><br><span class="line">   s3 &#x3D; append(s3,7) &#x2F;&#x2F; 当s3 修改了里面的值，s1 也会跟着改，但指针不变</span><br><span class="line">   fmt.Printf(&quot;s1&#x3D;%v, s1 array pointer is %p, len(s1)&#x3D;%d, cap(s1)&#x3D;%d\n&quot;,s1,s1,len(s1),cap(s1))</span><br><span class="line">   fmt.Printf(&quot;s2&#x3D;%v, s2 array pointer is %p, len(s2)&#x3D;%d, cap(s2)&#x3D;%d\n&quot;,s2,s2,len(s2),cap(s2))</span><br><span class="line">   fmt.Printf(&quot;s3&#x3D;%v, s3 array pointer is %p, len(s3)&#x3D;%d, cap(s3)&#x3D;%d\n\n&quot;,s3,s3,len(s3),cap(s3))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -240,7 +385,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-14 22:32:11 / Modified: 22:32:35" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:11+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:32:11 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:32:11+08:00">2020-07-14</time>
             </span>
 
           
@@ -257,13 +402,13 @@
           <p>\1. 大家可以去我的网盘自行下载然后安装</p>
 <p>链接：<a href="https://share.weiyun.com/f3Fr2IGB" target="_blank" rel="noopener">https://share.weiyun.com/f3Fr2IGB</a> 密码：ptbav6</p>
 <p>\2. 将kengen这个压缩包里面的文件放到 navicat15的安装目录中并打开，且将windows断网</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/3f33247aef1bdee069b615c6f0ccf6a6.png" alt="img">按图片上的进行操作</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/315a7467c12b6ca4f258dc14e6bafaf7.png" alt="img">去注册</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/0c6c82b31b81ca0baea623f4a7e61a64.png" alt="img">这一步记得将计算机断网</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/90993692dce4a8fdf4edf3d6b510b496.png" alt="img">断网后才可以手动激活</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/3dd5e4782143be7d0a197747a8b79a4d.png" alt="img">按图片上的操作</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/2368696f4453bdfe809f278fe1731b4b.png" alt="img">然后提示已激活</p>
-<p><img src="http://jackwong.xyz/static/upload/2020/05/19/81b0021a297572a052ff028e73cf3f7c.png" alt="img">现在可以正常的使用了</p>
+<p><img src="images/post/2020/07/3f33247aef1bdee069b615c6f0ccf6a6.png" alt="img">按图片上的进行操作</p>
+<p><img src="images/post/2020/07/315a7467c12b6ca4f258dc14e6bafaf7.png" alt="img">去注册</p>
+<p><img src="images/post/2020/07/0c6c82b31b81ca0baea623f4a7e61a64.png" alt="img">这一步记得将计算机断网</p>
+<p><img src="images/post/2020/07/90993692dce4a8fdf4edf3d6b510b496.png" alt="img">断网后才可以手动激活</p>
+<p><img src="images/post/2020/07/3dd5e4782143be7d0a197747a8b79a4d.png" alt="img">按图片上的操作</p>
+<p><img src="images/post/2020/07/2368696f4453bdfe809f278fe1731b4b.png" alt="img">然后提示已激活</p>
+<p><img src="images/post/2020/07/81b0021a297572a052ff028e73cf3f7c.png" alt="img">现在可以正常的使用了</p>
 
       
     </div>
@@ -308,7 +453,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-14 22:31:15 / Modified: 22:31:59" itemprop="dateCreated datePublished" datetime="2020-07-14T22:31:15+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:31:15 / Modified: 23:31:35" itemprop="dateCreated datePublished" datetime="2020-07-14T22:31:15+08:00">2020-07-14</time>
             </span>
 
           
@@ -428,7 +573,7 @@ class JWTCustomUserProvider extends EloquentUserProvider
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-14 22:30:13 / Modified: 23:03:58" itemprop="dateCreated datePublished" datetime="2020-07-14T22:30:13+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:30:13 / Modified: 23:33:04" itemprop="dateCreated datePublished" datetime="2020-07-14T22:30:13+08:00">2020-07-14</time>
             </span>
 
           
@@ -492,7 +637,7 @@ class JWTCustomUserProvider extends EloquentUserProvider
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-14 22:29:36 / Modified: 22:30:00" itemprop="dateCreated datePublished" datetime="2020-07-14T22:29:36+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:29:36 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:29:36+08:00">2020-07-14</time>
             </span>
 
           
@@ -509,15 +654,15 @@ class JWTCustomUserProvider extends EloquentUserProvider
           <p>\1. 首先设置yum源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://jackwong.xyz/static/upload/2020/05/08/47a25840c7895ff923a72f29487ecc0d.png" alt="img"></p>
+<p><img src="images/post/2020/07/47a25840c7895ff923a72f29487ecc0d.png" alt="img"></p>
 <p>\2. 检查是否更新成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://jackwong.xyz/static/upload/2020/05/08/d237c67d50235cb738bf799f8875f1cb.png" alt="img"></p>
+<p><img src="images/post/2020/07/d237c67d50235cb738bf799f8875f1cb.png" alt="img"></p>
 <p>3.安装docker，我这里就不指定版本了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker-ce -y</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://jackwong.xyz/static/upload/2020/05/08/6ee12e604f64bd852d53ac9e82bd6071.png" alt="img"></p>
+<p><img src="images/post/2020/07/6ee12e604f64bd852d53ac9e82bd6071.png" alt="img"></p>
 <p>4.运行且设置开机启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker &amp;&amp; systemctl enable docker</span><br></pre></td></tr></table></figure>
       
@@ -561,8 +706,9 @@ class JWTCustomUserProvider extends EloquentUserProvider
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-07-14 22:27:06" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
+              <time title="Created: 2020-07-14 22:27:06 / Modified: 23:50:28" itemprop="dateCreated datePublished" datetime="2020-07-14T22:27:06+08:00">2020-07-14</time>
             </span>
 
           
@@ -576,7 +722,142 @@ class JWTCustomUserProvider extends EloquentUserProvider
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <ol>
+<li><p>\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;= 7.2.5</p>
+</li>
+<li><pre><code>composer create-project --prefer-dist laravel/laravel jwtdemo
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
+composer require tymon/jwt-auth
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Publish the config</span><br></pre></td></tr></table></figure>
+php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\LaravelServiceProvider&quot;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Generate secret key</span><br></pre></td></tr></table></figure>
+php artisan jwt:secret
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\4. 创建表，模型，我这里将User模型移到了App\Models下</span><br></pre></td></tr></table></figure>
+sql：
+</code></pre></li>
+</ol>
+<p>CREATE TABLE <code>users</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
+<p>CREATE TABLE <code>admins</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
+<p>&lt;?php</p>
+<p>namespace App\Models;</p>
+<p>use Illuminate\Foundation\Auth\User as Authenticatable;<br>use Tymon\JWTAuth\Contracts\JWTSubject;</p>
+<p>class Admin extends Authenticatable implements JWTSubject<br>{<br>    protected $fillable = [<br>        ‘username’, ‘mobile’, ‘password’,<br>    ];</p>
+<pre><code>/**
+ * Get the identifier that will be stored in the subject claim of the JWT.
+ *
+ * @return mixed
+ */
+public function getJWTIdentifier()
+{
+    return $this-&gt;getKey();
+}
+
+/**
+ * Return a key value array, containing any custom claims to be added to the JWT.
+ *
+ * @return array
+ */
+public function getJWTCustomClaims()
+{
+    return [&apos;role&apos; =&gt; &apos;admin&apos;];
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\6. 添加中间件</span><br></pre></td></tr></table></figure>
+<p>&lt;?php</p>
+<p>namespace App\Http\Middleware;</p>
+<p>use Closure;<br>use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;<br>use Tymon\JWTAuth\Exceptions\JWTException;<br>use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;</p>
+<p>class JWTRoleAuth extends BaseMiddleware<br>{<br>    /**<br>     * Handle an incoming request.<br>     *<br>     * @param $request<br>     * @param Closure $next<br>     * @param null $role<br>     * @return mixed<br>     <em>/<br>    public function handle($request, Closure $next, $role = null)<br>    {<br>        try {<br>            // 解析token角色<br>            $token_role = $this-&gt;auth-&gt;parseToken()-&gt;getClaim(‘role’);<br>        } catch (JWTException $e) {<br>            /*</em><br>             * token解析失败，说明请求中没有可用的token。<br>             * 为了可以全局使用（不需要token的请求也可通过）。<br>             * 因为这个中间件的责职只是校验token里的角色。<br>             */<br>            return response([‘code’=&gt;400,’msg’=&gt;’缺少token’]);<br>        }</p>
+<pre><code>    // 判断token角色。
+    if ($token_role != $role) {
+        return response([&apos;code&apos;=&gt;401,&apos;msg&apos;=&gt;&apos;User role error&apos;]);
+    }
+
+    return $next($request);
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">App\Http\Kernel 追加</span><br></pre></td></tr></table></figure>
+<p>// 多表jwt验证校验<br>‘jwt.role’ =&gt; \App\Http\Middleware\JWTRoleAuth::class,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\7. Admin 验证控制器，其他的也类似</span><br></pre></td></tr></table></figure>
+<p>&lt;?php</p>
+<p>namespace App\Http\Controllers\Admin;</p>
+<p>use App\Http\Controllers\Controller;<br>use App\Logic\AuthLogic;<br>use App\Models\Admin;<br>use Illuminate\Http\Request;<br>use Illuminate\Support\Facades\Hash;<br>use Tymon\JWTAuth\Facades\JWTAuth;</p>
+<p>class AuthController extends Controller<br>{<br>    /**<br>     * 后台管理员登录<br>     * @param Request $request<br>     * @return \Illuminate\Http\JsonResponse<br>     */<br>    public function login(Request $request)<br>    {</p>
+<pre><code>    $credentials = request([&apos;username&apos;, &apos;password&apos;]);
+
+    if (! $token = auth(&apos;admin&apos;)-&gt;attempt($credentials)) {
+        return response()-&gt;json([&apos;code&apos;=&gt;401,&apos;msg&apos; =&gt; &apos;Unauthorized&apos;], 401);
+    }
+
+    return $this-&gt;respondWithToken($token);
+}
+
+/**
+ * 后台管理员注册
+ * @param Request $request
+ * @return \Illuminate\Http\JsonResponse
+ */
+public function register(Request $request)
+{
+    $username = $request-&gt;username;
+    $password = $request-&gt;password;
+    $user = Admin::create([&apos;username&apos; =&gt; $username, &apos;password&apos; =&gt; Hash::make($password)]);
+    return response([
+        &apos;code&apos; =&gt; 200,
+        &apos;msg&apos; =&gt; &apos;ok&apos;,
+        &apos;data&apos; =&gt; [
+            &apos;access_token&apos; =&gt; JWTAuth::fromUser($user),
+            &apos;token_type&apos; =&gt; &apos;bearer&apos;,
+        ]
+    ]);
+}
+/**
+ * Get the authenticated User.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
+public function me(Request $request)
+{
+    $id = $request-&gt;user()-&gt;id;
+    $username = $request-&gt;user()-&gt;username;
+    $user = $request-&gt;user();
+    dd($username);
+    dd(auth(&apos;admin&apos;)-&gt;payload()-&gt;get());
+
+}
+/**
+ * Refresh a token.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
+public function refresh()
+{
+    return $this-&gt;respondWithToken(auth()-&gt;refresh());
+}
+/**
+ * Get the token array structure.
+ *
+ * @param  string $token
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
+protected function respondWithToken($token)
+{
+    return response()-&gt;json([
+        &apos;code&apos; =&gt; 200,
+        &apos;msg&apos; =&gt; &apos;ok&apos;,
+        &apos;data&apos; =&gt; [
+            &apos;access_token&apos; =&gt; $token,
+            &apos;token_type&apos; =&gt; &apos;bearer&apos;,
+        ]
+    ]);
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\8. Admin + User api路由 jwt.role仅仅只验证token颁发的渠道，auth 这个中间件大家可以自行整合，比如修改验证失败的json响应体。使用auth验证 $request-&gt;user()可以拿到用户模型</span><br><span class="line"></span><br><span class="line">jwt.auth不推荐大家使用 ，因为无法区分出来是要验证哪个表的用户</span><br></pre></td></tr></table></figure>
+<p>Route::namespace(‘Admin’)-&gt;prefix(‘admin’)-&gt;group(function ($admin) {<br>    Route::post(‘login’, ‘AuthController@login’);<br>    Route::post(‘register’, ‘AuthController@register’);<br>    $admin-&gt;group([<br>        ‘middleware’ =&gt; [‘jwt.role:admin’,’auth:admin’],<br>    ], function ($router) {<br>        $router-&gt;get(‘me’, ‘AuthController@me’);<br>    });<br>});</p>
+<p>Route::namespace(‘User’)-&gt;prefix(‘user’)-&gt;group(function ($admin) {<br>    Route::post(‘login’, ‘AuthController@login’);<br>    Route::post(‘register’, ‘AuthController@register’);<br>    $admin-&gt;group([<br>        ‘middleware’ =&gt; [‘jwt.role:user’,’auth:user’],<br>    ], function ($router) {<br>        $router-&gt;get(‘me’, ‘AuthController@me’);<br>    });<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\9. 关于Api的系统响应不是你想要的结构体时，修改App\Exceptions\Handler.php</span><br></pre></td></tr></table></figure>
+<p>public function render($request, Throwable $exception)<br>{<br>    if ($request-&gt;expectsJson()){<br>        return response([‘code’=&gt;400,’msg’=&gt;$exception-&gt;getMessage()]);<br>    }<br>    return parent::render($request, $exception);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\10. 贴上我的 config\auth.php,这个配置是配合 auth中间件或auth函数使用</span><br></pre></td></tr></table></figure>
+<p> ‘guards’ =&gt; [<br>        //…<br>        //普通用户<br>        ‘user’ =&gt; [<br>            ‘driver’ =&gt; ‘jwt’,<br>            ‘provider’ =&gt; ‘users’,<br>            ‘hash’ =&gt; false,<br>        ],<br>        //管理员<br>        ‘admin’ =&gt; [<br>            ‘driver’ =&gt; ‘jwt’,<br>            ‘provider’ =&gt; ‘admins’,<br>            ‘hash’ =&gt; false,<br>        ],<br>    ‘providers’ =&gt; [<br>        ‘users’ =&gt; [<br>            ‘driver’ =&gt; ‘eloquent’,<br>            ‘model’ =&gt; App\Models\User::class,<br>        ],<br>        ‘admins’ =&gt; [<br>            ‘driver’ =&gt; ‘eloquent’,<br>            ‘model’ =&gt; App\Models\Admin::class,<br>        ],<br>    ],<br>```</p>
+
       
     </div>
 
@@ -736,132 +1017,6 @@ class JWTCustomUserProvider extends EloquentUserProvider
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/PHP%E5%AF%BC%E5%87%BAExcel%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E5%8A%9E%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWOng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2020/07/14/PHP%E5%AF%BC%E5%87%BAExcel%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">PHP导出Excel提高性能的办法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-14 22:24:05 / Modified: 22:25:41" itemprop="dateCreated datePublished" datetime="2020-07-14T22:24:05+08:00">2020-07-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>phpExcel的性能很差，占用内存，用这个一般都会限制导出行数，如果不过多的考虑样式之类，可以使用t的方式导出excel，</p>
-<p>举个例子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">header(<span class="string">"Content-type:application/vnd.ms-excel"</span>);</span><br><span class="line">header(<span class="string">"Content-Disposition:attachment;filename=test_data.xls"</span>);</span><br><span class="line"><span class="comment">//输出内容如下：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"姓名"</span>.<span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"年龄"</span>.<span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"学历"</span>.<span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"张三"</span>.<span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"25"</span>.<span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">echo</span>   <span class="string">"本科"</span>.<span class="string">"\t"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>我们公司现在大部分导出excel数据都用t,性能完爆phpExcel，题主可以去测试一下性能比</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/Nginx%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%B9%B3%E6%BB%91%E9%87%8D%E8%BD%BD%EF%BC%88%E9%87%8D%E5%90%AF%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWOng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2020/07/14/Nginx%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%B9%B3%E6%BB%91%E9%87%8D%E8%BD%BD%EF%BC%88%E9%87%8D%E5%90%AF%EF%BC%89/" class="post-title-link" itemprop="url">Nginx如何做到平滑重载（重启）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-14 22:23:20 / Modified: 22:25:29" itemprop="dateCreated datePublished" datetime="2020-07-14T22:23:20+08:00">2020-07-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>检查nginx配置是否有语法 错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;tengine&#x2F;sbin&#x2F;nginx -t</span><br></pre></td></tr></table></figure>
-
-<p>平滑重启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx &#x2F;usr&#x2F;local&#x2F;tengine&#x2F;sbin&#x2F;nginx -s reload</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -931,12 +1086,12 @@ class JWTCustomUserProvider extends EloquentUserProvider
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
