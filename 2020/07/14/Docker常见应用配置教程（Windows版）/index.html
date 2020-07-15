@@ -28,7 +28,7 @@
 <meta property="og:description" content="RabbitMQ 1docker run -d  --name rabbitmq --restart always rabbitmq:3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T14:24:52.000Z">
-<meta property="article:modified_time" content="2020-07-15T00:30:26.630Z">
+<meta property="article:modified_time" content="2020-07-15T03:08:13.070Z">
 <meta property="article:author" content="JackWOng">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 08:30:26" itemprop="dateModified" datetime="2020-07-15T08:30:26+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-15 11:08:13" itemprop="dateModified" datetime="2020-07-15T11:08:13+08:00">2020-07-15</time>
               </span>
 
           
@@ -196,32 +196,32 @@
 
       
         <p>RabbitMQ</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d  --name rabbitmq --restart always rabbitmq:3</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d  --name rabbitmq --restart always rabbitmq:3</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
 <p>mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD&#x3D;123456 -d --restart always mysql:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --restart always mysql:latest</span><br></pre></td></tr></table></figure>
 
 
 
 <p>redis</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name redis -d -p 6379:6379 --restart always redis</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name redis -d -p 6379:6379 --restart always redis</span><br></pre></td></tr></table></figure>
 
 
 
 <p>Dnsmasq</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name dnsmasq -p 53:53&#x2F;udp -p 5380:8080 -v D:&#x2F;environment&#x2F;dns&#x2F;dnsmasq&#x2F;dnsmasq.conf:&#x2F;etc&#x2F;dnsmasq.conf --log-opt &quot;max-size&#x3D;100m&quot; -e &quot;HTTP_USER&#x3D;foo&quot; -e &quot;HTTP_PASS&#x3D;bar&quot; --restart always jpillora&#x2F;dnsmasq</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name dnsmasq -p 53:53/udp -p 5380:8080 -v D:/environment/dns/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf --<span class="built_in">log</span>-opt <span class="string">"max-size=100m"</span> -e <span class="string">"HTTP_USER=foo"</span> -e <span class="string">"HTTP_PASS=bar"</span> --restart always jpillora/dnsmasq</span><br></pre></td></tr></table></figure>
 
 
 
 <p>elasticsearch</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9200:9200 -p 9300:9300 --name elasticsearch -e &quot;discovery.type&#x3D;single-node&quot; -e &quot;ES_JAVA_OPTS&#x3D;-Xms512m -Xmx512m&quot; -v D:&#x2F;environment&#x2F;es&#x2F;data:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;data docker.elastic.co&#x2F;elasticsearch&#x2F;elasticsearch:7.6.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9200:9200 -p 9300:9300 --name elasticsearch -e <span class="string">"discovery.type=single-node"</span> -e <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span> -v D:/environment/es/data:/usr/share/elasticsearch/data docker.elastic.co/elasticsearch/elasticsearch:7.6.2</span><br></pre></td></tr></table></figure>
 
 
 
 <p>kibana</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5601:5601 -e &quot;I18N_LOCALE&#x3D;zh-CN&quot; --name kibana --link elasticsearch:elasticsearch kibana:7.6.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5601:5601 -e <span class="string">"I18N_LOCALE=zh-CN"</span> --name kibana --link elasticsearch:elasticsearch kibana:7.6.2</span><br></pre></td></tr></table></figure>
     </div>
 
     
