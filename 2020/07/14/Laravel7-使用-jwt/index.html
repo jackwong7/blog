@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&amp;#x2F">
+  <meta name="description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020-07-14-Laravel7 使用 jwt">
+<meta property="og:title" content="Laravel7 使用 jwt">
 <meta property="og:url" content="https://jackwong7.github.io/blog/2020/07/14/Laravel7-%E4%BD%BF%E7%94%A8-jwt/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5  composer create-project --prefer-dist laravel&#x2F;laravel jwtdemo 12345678910111213143. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&amp;#x2F">
+<meta property="og:description" content="\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;&#x3D; 7.2.5">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T14:27:06.000Z">
-<meta property="article:modified_time" content="2020-07-14T16:12:55.625Z">
+<meta property="article:modified_time" content="2020-07-15T00:41:34.929Z">
 <meta property="article:author" content="JackWOng">
 <meta property="article:tag" content="Laravel">
 <meta property="article:tag" content="PHP">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>2020-07-14-Laravel7 使用 jwt | Blog</title>
+  <title>Laravel7 使用 jwt | Blog</title>
   
 
 
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2020-07-14-Laravel7 使用 jwt
+          Laravel7 使用 jwt
         </h1>
 
         <div class="post-meta">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 00:12:55" itemprop="dateModified" datetime="2020-07-15T00:12:55+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-15 08:41:34" itemprop="dateModified" datetime="2020-07-15T08:41:34+08:00">2020-07-15</time>
               </span>
 
           
@@ -198,9 +198,10 @@
       
         <ol>
 <li><p>\1. 首先我们使用composer命令拉取最新的laravel7项目，确保自己的环境是php &gt;= 7.2.5</p>
+<a id="more"></a>
 </li>
 <li><pre><code>composer create-project --prefer-dist laravel/laravel jwtdemo
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ![img](0a9046f5597b2eb571a0601da68c4a9d.png)当出现Successfully就代表完成了</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">4. \2. 执行composer install 初始化laravel项目，配置.env文件，初始化数据库配置，linux系统需要注意权限问题</span><br><span class="line"></span><br><span class="line">5. </span><br><span class="line"></span><br><span class="line">6. \3. 拉取 jwt</span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
 composer require tymon/jwt-auth
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Publish the config</span><br></pre></td></tr></table></figure>
 php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\LaravelServiceProvider&quot;
@@ -212,7 +213,7 @@ sql：
 </ol>
 <p>CREATE TABLE <code>users</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
 <p>CREATE TABLE <code>admins</code> (<br>  <code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br>  <code>username</code> varchar(255) NOT NULL,<br>  <code>password</code> varchar(255) NOT NULL,<br>  <code>mobile</code> varchar(255) DEFAULT ‘’,<br>  <code>created_at</code> timestamp NOT NULL,<br>  <code>updated_at</code> timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,<br>  <code>deleted_at</code> timestamp NULL DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](&#x2F;blog&#x2F;images&#x2F;post&#x2F;2020&#x2F;07&#x2F;61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](61207f6469c4883d657bd523feb12cb7.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\5. User&#x2F;Admin 实现jwt接口</span><br></pre></td></tr></table></figure>
 <p>&lt;?php</p>
 <p>namespace App\Models;</p>
 <p>use Illuminate\Foundation\Auth\User as Authenticatable;<br>use Tymon\JWTAuth\Contracts\JWTSubject;</p>
@@ -484,6 +485,8 @@ protected function respondWithToken($token)
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -497,6 +500,65 @@ protected function respondWithToken($token)
 
 <script src="/blog/js/next-boot.js"></script>
 
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
 
 
 
@@ -516,9 +578,11 @@ protected function respondWithToken($token)
 
 
 
+    <div id="pjax">
   
 
   
 
+    </div>
 </body>
 </html>
