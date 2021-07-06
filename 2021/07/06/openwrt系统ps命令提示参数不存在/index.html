@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JW Blog">
-<meta property="og:url" content="https://jackwong7.github.io/blog/archives/2021/index.html">
+  <meta name="description" content="最近使用openwrt查看进程时候，提示ps的参数不存在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openwrt系统ps命令提示参数不存在">
+<meta property="og:url" content="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/index.html">
 <meta property="og:site_name" content="JW Blog">
+<meta property="og:description" content="最近使用openwrt查看进程时候，提示ps的参数不存在">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-06T08:15:52.000Z">
+<meta property="article:modified_time" content="2021-07-06T08:18:51.806Z">
 <meta property="article:author" content="JackWong">
+<meta property="article:tag" content="Openwrt">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://jackwong7.github.io/blog/archives/2021/">
+<link rel="canonical" href="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | JW Blog</title>
+  <title>openwrt系统ps命令提示参数不存在 | JW Blog</title>
   
 
 
@@ -139,70 +144,87 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 18 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="JackWong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JW Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          openwrt系统ps命令提示参数不存在
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-06 16:15:52 / Modified: 16:18:51" itemprop="dateCreated datePublished" datetime="2021-07-06T16:15:52+08:00">2021-07-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <p>最近使用openwrt查看进程时候，提示ps的参数不存在</p>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  <span class="comment"># ps axu | grep progname</span></span><br><span class="line">ps: unrecognized option: a</span><br><span class="line">BusyBox v1.31.1 () multi-call binary.</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-07-06T16:15:52+08:00"
-              content="2021-07-06">
-          07-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/" itemprop="url">
-            <span itemprop="name">openwrt系统ps命令提示参数不存在</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-07-04T09:27:47+08:00"
-              content="2021-07-04">
-          07-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" itemprop="url">
-            <span itemprop="name">windows下交叉编译 cgo for arm64</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>安装 procps-ng-ps</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ ! -x /bin/procps-ng-ps ]; <span class="keyword">then</span> opkg update; opkg install procps-ng-ps; <span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Openwrt/" rel="tag"># Openwrt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" rel="prev" title="windows下交叉编译 cgo for arm64">
+      <i class="fa fa-chevron-left"></i> windows下交叉编译 cgo for arm64
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -255,6 +277,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">解决方案：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
