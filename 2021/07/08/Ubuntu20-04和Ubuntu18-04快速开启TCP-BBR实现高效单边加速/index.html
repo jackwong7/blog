@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="最近使用openwrt查看进程时候，提示ps的参数不存在">
+  <meta name="description" content="Linux Kernel 内核升级到 4.9 及以上版本可以实现 BBR 加速，由于Ubuntu 18.04 默认的内核就是 4.15版本的内核，由于Ubuntu 20.04 默认的内核就是 5.4 版本的内核，并已经默认编译了 TCP BBR 模块，所以可以直接通过参数开启。 新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openwrt系统ps命令提示参数不存在">
-<meta property="og:url" content="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/index.html">
+<meta property="og:title" content="Ubuntu20.04和Ubuntu18.04快速开启TCP-BBR实现高效单边加速">
+<meta property="og:url" content="https://jackwong7.github.io/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/index.html">
 <meta property="og:site_name" content="JW Blog">
-<meta property="og:description" content="最近使用openwrt查看进程时候，提示ps的参数不存在">
+<meta property="og:description" content="Linux Kernel 内核升级到 4.9 及以上版本可以实现 BBR 加速，由于Ubuntu 18.04 默认的内核就是 4.15版本的内核，由于Ubuntu 20.04 默认的内核就是 5.4 版本的内核，并已经默认编译了 TCP BBR 模块，所以可以直接通过参数开启。 新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-06T08:15:52.000Z">
-<meta property="article:modified_time" content="2021-07-06T08:18:51.806Z">
+<meta property="article:published_time" content="2021-07-08T15:00:24.000Z">
+<meta property="article:modified_time" content="2021-07-08T15:01:24.970Z">
 <meta property="article:author" content="JackWong">
-<meta property="article:tag" content="Openwrt">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="BBR">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/">
+<link rel="canonical" href="https://jackwong7.github.io/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>openwrt系统ps命令提示参数不存在 | JW Blog</title>
+  <title>Ubuntu20.04和Ubuntu18.04快速开启TCP-BBR实现高效单边加速 | JW Blog</title>
   
 
 
@@ -151,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/">
+    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -164,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          openwrt系统ps命令提示参数不存在
+          Ubuntu20.04和Ubuntu18.04快速开启TCP-BBR实现高效单边加速
         </h1>
 
         <div class="post-meta">
@@ -175,7 +176,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-06 16:15:52 / Modified: 16:18:51" itemprop="dateCreated datePublished" datetime="2021-07-06T16:15:52+08:00">2021-07-06</time>
+              <time title="Created: 2021-07-08 23:00:24 / Modified: 23:01:24" itemprop="dateCreated datePublished" datetime="2021-07-08T23:00:24+08:00">2021-07-08</time>
             </span>
 
           
@@ -189,14 +190,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近使用openwrt查看进程时候，提示ps的参数不存在</p>
+        <p>Linux Kernel 内核升级到 4.9 及以上版本可以实现 BBR 加速，由于Ubuntu 18.04 默认的内核就是 <code>4.15</code>版本的内核，由于Ubuntu 20.04 默认的内核就是 <code>5.4</code> 版本的内核，并已经默认编译了 TCP BBR 模块，所以可以直接通过参数开启。</p>
+<p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑慢，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
 <span id="more"></span>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  <span class="comment"># ps axu | grep progname</span></span><br><span class="line">ps: unrecognized option: a</span><br><span class="line">BusyBox v1.31.1 () multi-call binary.</span><br></pre></td></tr></table></figure>
+<p><strong>修改系统变量：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> net.core.default_qdisc=fq &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> net.ipv4.tcp_congestion_control=bbr &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
 
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>安装 procps-ng-ps</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ ! -x /bin/procps-ng-ps ]; <span class="keyword">then</span> opkg update; opkg install procps-ng-ps; <span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><strong>保存生效</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
 
+<p><strong>执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
+
+<p>如果结果是这样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line">net.ipv4.tcp_available_congestion_control = bbr cubic reno</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -206,7 +214,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/Openwrt/" rel="tag"># Openwrt</a>
+              <a href="/blog/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+              <a href="/blog/tags/BBR/" rel="tag"># BBR</a>
           </div>
 
         
@@ -215,13 +224,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" rel="prev" title="windows下交叉编译 cgo for arm64">
-      <i class="fa fa-chevron-left"></i> windows下交叉编译 cgo for arm64
+    <a href="/blog/2021/07/08/ubuntu%E5%BC%80%E5%90%AFroot%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" rel="prev" title="ubuntu开启root远程登录">
+      <i class="fa fa-chevron-left"></i> ubuntu开启root远程登录
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/07/08/ubuntu%E5%BC%80%E5%90%AFroot%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" rel="next" title="ubuntu开启root远程登录">
-      ubuntu开启root远程登录 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -280,7 +286,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">解决方案：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
