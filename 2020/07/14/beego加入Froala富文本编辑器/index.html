@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="首先去官网下载资源链接：Froala编辑器介绍网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="beego加入Froala富文本编辑器">
+<meta property="og:url" content="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/index.html">
+<meta property="og:site_name" content="JW Blog">
+<meta property="og:description" content="首先去官网下载资源链接：Froala编辑器介绍网页">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/f8875b16e97c092a67826dc0c6650feb.png">
+<meta property="og:image" content="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/383c9b755e5ef7779480f0079d407ce0.png">
+<meta property="article:published_time" content="2020-07-14T15:35:20.000Z">
+<meta property="article:modified_time" content="2020-07-15T03:30:19.727Z">
+<meta property="article:author" content="JackWong">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="beego">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/f8875b16e97c092a67826dc0c6650feb.png">
+
+<link rel="canonical" href="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>beego加入Froala富文本编辑器 | JW Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JW Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2020/07/14/beego%E5%8A%A0%E5%85%A5Froala%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="JackWong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JW Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          beego加入Froala富文本编辑器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-14 23:35:20" itemprop="dateCreated datePublished" datetime="2020-07-14T23:35:20+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 11:30:19" itemprop="dateModified" datetime="2020-07-15T11:30:19+08:00">2020-07-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="首先去官网下载资源"><a href="#首先去官网下载资源" class="headerlink" title="首先去官网下载资源"></a>首先去官网下载资源</h4><p>链接：<a href="https://froala.com/wysiwyg-editor/" target="_blank" rel="noopener">Froala编辑器介绍网页</a></p>
+<a id="more"></a>
+
+<p><img data-src="f8875b16e97c092a67826dc0c6650feb.png" alt="img"></p>
+<h4 id="将css，js引入到项目中，我这里是把所有的css，js都引入了"><a href="#将css，js引入到项目中，我这里是把所有的css，js都引入了" class="headerlink" title="将css，js引入到项目中，我这里是把所有的css，js都引入了"></a>将css，js引入到项目中，我这里是把所有的css，js都引入了</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/froala_editor.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/froala_style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/code_view.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/draggable.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/colors.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/emoticons.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/image_manager.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/image.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/line_breaker.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/table.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/char_counter.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/video.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/fullscreen.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/file.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/quick_insert.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/help.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/third_party/spell_checker.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/froala_editor_3.1.1/css/plugins/special_characters.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/froala_editor.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/align.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/char_counter.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/code_beautifier.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/code_view.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/colors.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/draggable.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/emoticons.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/entities.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/file.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/font_size.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/font_family.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/fullscreen.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/image.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/image_manager.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/line_breaker.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/inline_style.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/link.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/lists.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/paragraph_format.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/paragraph_style.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/quick_insert.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/quote.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/table.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/save.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/url.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/video.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/help.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/print.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/third_party/spell_checker.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/special_characters.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/plugins/word_paste.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/static/froala_editor_3.1.1/js/languages/zh_cn.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加富文本html区域块"><a href="#添加富文本html区域块" class="headerlink" title="添加富文本html区域块"></a>添加富文本html区域块</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"editor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">'edit'</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"margin-top: 30px;"</span>&gt;</span>&#123;&#123;.post.Content&#125;&#125;<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置富文本功能"><a href="#配置富文本功能" class="headerlink" title="配置富文本功能"></a>配置富文本功能</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//这个是我自定义的按钮，用来添加代码区块的</span></span><br><span class="line">    FroalaEditor.DefineIcon(<span class="string">'insertCode'</span>, &#123; <span class="attr">NAME</span>: <span class="string">'plus'</span>, <span class="attr">SVG_KEY</span>: <span class="string">'add'</span> &#125;);</span><br><span class="line">    FroalaEditor.RegisterCommand(<span class="string">'insertCode'</span>, &#123;</span><br><span class="line">        title: <span class="string">'插入代码'</span>,</span><br><span class="line">        focus: <span class="literal">true</span>,</span><br><span class="line">        undo: <span class="literal">true</span>,</span><br><span class="line">        type:<span class="string">'dropdown'</span>,</span><br><span class="line">        refreshAfterCallback: <span class="literal">true</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">              <span class="string">'bash'</span>: <span class="string">'bash'</span>,</span><br><span class="line">              <span class="string">'php'</span>: <span class="string">'php'</span>,</span><br><span class="line">              <span class="string">'golang'</span>: <span class="string">'golang'</span>,</span><br><span class="line">              <span class="string">'sql'</span>: <span class="string">'sql'</span>,</span><br><span class="line">              <span class="string">'html'</span>: <span class="string">'html'</span>,</span><br><span class="line">              <span class="string">'css'</span>: <span class="string">'css'</span>,</span><br><span class="line">              <span class="string">'java'</span>: <span class="string">'java'</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        callback: <span class="function"><span class="keyword">function</span> (<span class="params">cmd,val</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> txt = <span class="keyword">this</span>.selection.text();</span><br><span class="line">            <span class="keyword">if</span> (txt === <span class="literal">undefined</span>) <span class="keyword">return</span>;</span><br><span class="line">            code = txt.replace(<span class="regexp">/\s+$/</span>, <span class="string">""</span>); <span class="comment">// rtrim</span></span><br><span class="line">            code = $(<span class="string">'&lt;span/&gt;'</span>).text(code).html(); <span class="comment">// encode</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> htmlCode = <span class="string">"&lt;pre language='"</span> + val + <span class="string">"' class='code'&gt;"</span> + code + <span class="string">"&lt;/pre&gt;&lt;/div&gt;"</span>;</span><br><span class="line">            <span class="keyword">var</span> codeBlock = <span class="string">"&lt;div align='left' dir='ltr'&gt;"</span> + htmlCode + <span class="string">"&lt;/div&gt;&lt;br/&gt;"</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.html.insert(codeBlock);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//自定义区块--end</span></span><br><span class="line">    <span class="keyword">new</span> FroalaEditor(<span class="string">"#edit"</span>,&#123;</span><br><span class="line">        key: <span class="string">''</span>,</span><br><span class="line">        language: <span class="string">'zh_cn'</span>,</span><br><span class="line">        height: <span class="number">300</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// disable quick insert</span></span><br><span class="line">        quickInsertTags: [],</span><br><span class="line"></span><br><span class="line">        <span class="comment">//需要按钮可以参考这几个</span></span><br><span class="line">        <span class="comment">//&#123;moreText:&#123;buttons:</span></span><br><span class="line">        <span class="comment">//["bold","italic","underline","strikeThrough","subscript","superscript","fontFamily","fontSize","textColor","backgroundColor","inlineClass","inlineStyle","clearFormatting"]</span></span><br><span class="line">        <span class="comment">//&#125;,moreParagraph:&#123;buttons:</span></span><br><span class="line">        <span class="comment">//["alignLeft","alignCenter","formatOLSimple","alignRight","alignJustify","formatOL","formatUL","paragraphFormat","paragraphStyle","lineHeight","outdent","indent","quote"]</span></span><br><span class="line">        <span class="comment">//&#125;,moreRich:&#123;buttons:</span></span><br><span class="line">        <span class="comment">//["insertLink","insertImage","insertVideo","insertTable","emoticons","fontAwesome","specialCharacters","embedly","insertFile","insertHR"]</span></span><br><span class="line">        <span class="comment">//&#125;,moreMisc:&#123;buttons:</span></span><br><span class="line">        <span class="comment">//["undo","redo","fullscreen","print","getPDF","spellChecker","selectAll","html","help"]</span></span><br><span class="line">        <span class="comment">//,align:"right",buttonsVisible:2&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// toolbar buttons</span></span><br><span class="line">        toolbarButtons: [<span class="string">'fullscreen'</span>, <span class="string">'textColor'</span>,<span class="string">'fontFamily'</span>,<span class="string">'backgroundColor'</span>,<span class="string">'bold'</span>, <span class="string">'italic'</span>, <span class="string">'underline'</span>, <span class="string">'strikeThrough'</span>,<span class="string">'insertCode'</span>,<span class="string">'emoticons'</span>, <span class="string">'|'</span>, <span class="string">'paragraphFormat'</span>, <span class="string">'fontSize'</span>, <span class="string">'color'</span>, <span class="string">'|'</span>, <span class="string">'align'</span>, <span class="string">'formatOL'</span>, <span class="string">'formatUL'</span>, <span class="string">'outdent'</span>, <span class="string">'indent'</span>, <span class="string">'quote'</span>, <span class="string">'-'</span>, <span class="string">'insertLink'</span>, <span class="string">'insertFile'</span>, <span class="string">'insertImage'</span>, <span class="string">'insertVideo'</span>, <span class="string">'embedly'</span>, <span class="string">'insertTable'</span>, <span class="string">'|'</span>, <span class="string">'insertHR'</span>, <span class="string">'selectAll'</span>, <span class="string">'clearFormatting'</span>, <span class="string">'|'</span>, <span class="string">'spellChecker'</span>, <span class="string">'help'</span>, <span class="string">'html'</span>, <span class="string">'|'</span>, <span class="string">'undo'</span>, <span class="string">'redo'</span>],</span><br><span class="line"></span><br><span class="line">        <span class="comment">// upload file</span></span><br><span class="line">        imageUploadParam: <span class="string">'uploadname'</span>,</span><br><span class="line">        imageUploadURL: <span class="string">'/admin/upload'</span>,</span><br><span class="line">        fileUploadMethod: <span class="string">'POST'</span>,</span><br><span class="line">        fileMaxSize: <span class="number">20</span> * <span class="number">1024</span> * <span class="number">1024</span>,</span><br><span class="line">        fileAllowedTypes: [<span class="string">'*'</span>],</span><br><span class="line"></span><br><span class="line">        <span class="comment">// upload image</span></span><br><span class="line">        imageUploadParam: <span class="string">'uploadname'</span>,</span><br><span class="line">        imageUploadURL: <span class="string">'/admin/upload'</span>,</span><br><span class="line">        imageUploadMethod: <span class="string">'POST'</span>,</span><br><span class="line">        imageMaxSize: <span class="number">5</span> * <span class="number">1024</span> * <span class="number">1024</span>,</span><br><span class="line">        imageAllowedTypes: [<span class="string">'jpeg'</span>, <span class="string">'jpg'</span>, <span class="string">'png'</span>, <span class="string">'gif'</span>, <span class="string">'bmp'</span>, <span class="string">'svg+xml'</span>],</span><br><span class="line"></span><br><span class="line">        <span class="comment">// upload video</span></span><br><span class="line">        imageUploadParam: <span class="string">'uploadname'</span>,</span><br><span class="line">        imageUploadURL: <span class="string">'/admin/upload'</span>,</span><br><span class="line">        videoUploadMethod: <span class="string">'POST'</span>,</span><br><span class="line">        videoMaxSize: <span class="number">50</span> * <span class="number">1024</span> * <span class="number">1024</span>,</span><br><span class="line">        videoAllowedTypes: [<span class="string">'avi'</span>, <span class="string">'mov'</span>, <span class="string">'mp4'</span>, <span class="string">'m4v'</span>, <span class="string">'mpeg'</span>, <span class="string">'mpg'</span>, <span class="string">'wmv'</span>, <span class="string">'ogv'</span>],</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)()</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="上传图片到后端"><a href="#上传图片到后端" class="headerlink" title="上传图片到后端"></a>上传图片到后端</h4><p>需要注意后端返回的json url必须是  {“link”: “此次为图片地址”}</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传接口</span></span><br><span class="line">func (c *AdminController) Upload() &#123;</span><br><span class="line">   result := make(map[string]interface&#123;&#125;)</span><br><span class="line">   path := <span class="string">"./static/upload/"</span> + time.Now().Format(<span class="string">"2006/01/02"</span>)</span><br><span class="line">   <span class="keyword">if</span> _, <span class="attr">err</span> := os.Stat(path); os.IsNotExist(err) &#123;</span><br><span class="line">      err := os.MkdirAll(path, os.ModeDir)</span><br><span class="line">      <span class="keyword">if</span> err != nil &#123;</span><br><span class="line">         result[<span class="string">"code"</span>] = <span class="number">2</span></span><br><span class="line">         result[<span class="string">"message"</span>] = <span class="string">"上传异常"</span> + err.Error()</span><br><span class="line">         c.Data[<span class="string">"json"</span>] = result</span><br><span class="line">         c.ServeJSON()</span><br><span class="line">         <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   f, h, <span class="attr">err</span> := c.GetFile(<span class="string">"uploadname"</span>)</span><br><span class="line">   img := <span class="string">""</span></span><br><span class="line">   <span class="keyword">if</span> err == nil &#123;</span><br><span class="line">      exStrArr := strings.Split(h.Filename, <span class="string">"."</span>)</span><br><span class="line">      exStr := strings.ToLower(exStrArr[len(exStrArr)<span class="number">-1</span>])</span><br><span class="line">      <span class="keyword">if</span> exStr != <span class="string">"jpg"</span> &amp;&amp; exStr != <span class="string">"png"</span> &amp;&amp; exStr != <span class="string">"gif"</span> &#123;</span><br><span class="line">         result[<span class="string">"code"</span>] = <span class="number">1</span></span><br><span class="line">         result[<span class="string">"message"</span>] = <span class="string">"上传只能.jpg 或者png格式"</span></span><br><span class="line">      &#125;</span><br><span class="line">      img = path + <span class="string">"/"</span> + util.UniqueId() + <span class="string">"."</span> + exStr</span><br><span class="line">      err := c.SaveToFile(<span class="string">"uploadname"</span>, img) <span class="comment">// 保存位置在 static/upload, 没有文件夹要先创建</span></span><br><span class="line">      result[<span class="string">"code"</span>] = <span class="number">0</span></span><br><span class="line">      result[<span class="string">"message"</span>] = <span class="string">"上传成功"</span></span><br><span class="line">      result[<span class="string">"link"</span>] = strings.TrimLeft(img, <span class="string">"."</span>)</span><br><span class="line">      <span class="keyword">if</span> err != nil &#123;</span><br><span class="line">         result[<span class="string">"code"</span>] = <span class="number">2</span></span><br><span class="line">         result[<span class="string">"message"</span>] = <span class="string">"上传异常"</span> + err.Error()</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result[<span class="string">"code"</span>] = <span class="number">2</span></span><br><span class="line">      result[<span class="string">"message"</span>] = <span class="string">"上传异常"</span> + err.Error()</span><br><span class="line">   &#125;</span><br><span class="line">   defer f.Close()</span><br><span class="line">   c.Data[<span class="string">"json"</span>] = result</span><br><span class="line">   c.ServeJSON()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="我用到的css"><a href="#我用到的css" class="headerlink" title="我用到的css"></a>我用到的css</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.code</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">white-space</span>: pre;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">1px</span> <span class="number">1px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">075</span>);</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">margin</span>: .<span class="number">5em</span> <span class="number">0</span> <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">    <span class="attribute">-webkit-overflow-scrolling</span>: touch;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#090910</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fbfbfd</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: left;</span><br><span class="line">    <span class="attribute">word-spacing</span>: normal;</span><br><span class="line">    <span class="attribute">word-break</span>: normal;</span><br><span class="line">    <span class="attribute">word-wrap</span>: normal;</span><br><span class="line">    <span class="attribute">-moz-tab-size</span>: <span class="number">4</span>;</span><br><span class="line">    <span class="attribute">tab-size</span>: <span class="number">4</span>;</span><br><span class="line">    <span class="attribute">-webkit-hyphens</span>: none;</span><br><span class="line">    <span class="attribute">-ms-hyphens</span>: none;</span><br><span class="line">    <span class="attribute">hyphens</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: .<span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.9</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Consolas,source-code-pro,monospace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="最终效果图"><a href="#最终效果图" class="headerlink" title="最终效果图"></a>最终效果图</h4><p><img data-src="383c9b755e5ef7779480f0079d407ce0.png" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/blog/tags/beego/" rel="tag"># beego</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/07/14/Redis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" rel="prev" title="Redis过期删除策略">
+      <i class="fa fa-chevron-left"></i> Redis过期删除策略
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/07/15/Laravel-%E9%98%9F%E5%88%97%E6%89%A7%E8%A1%8C%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6/" rel="next" title="Laravel 队列执行频率限制 ">
+      Laravel 队列执行频率限制  <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E5%8E%BB%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E8%B5%84%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">首先去官网下载资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86css%EF%BC%8Cjs%E5%BC%95%E5%85%A5%E5%88%B0%E9%A1%B9%E7%9B%AE%E4%B8%AD%EF%BC%8C%E6%88%91%E8%BF%99%E9%87%8C%E6%98%AF%E6%8A%8A%E6%89%80%E6%9C%89%E7%9A%84css%EF%BC%8Cjs%E9%83%BD%E5%BC%95%E5%85%A5%E4%BA%86"><span class="nav-number">2.</span> <span class="nav-text">将css，js引入到项目中，我这里是把所有的css，js都引入了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AF%8C%E6%96%87%E6%9C%AChtml%E5%8C%BA%E5%9F%9F%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">添加富文本html区域块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%8C%E6%96%87%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">配置富文本功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%88%B0%E5%90%8E%E7%AB%AF"><span class="nav-number">5.</span> <span class="nav-text">上传图片到后端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%94%A8%E5%88%B0%E7%9A%84css"><span class="nav-number">6.</span> <span class="nav-text">我用到的css</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">7.</span> <span class="nav-text">最终效果图</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JackWong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JackWong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
