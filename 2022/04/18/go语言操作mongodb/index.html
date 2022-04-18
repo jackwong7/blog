@@ -20,28 +20,34 @@
     var CONFIG = {"hostname":"jackwong7.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JW Blog">
-<meta property="og:url" content="https://jackwong7.github.io/blog/index.html">
+  <meta name="description" content="前言最近学习在go中操作mongodb，了解到主要有第三方mgo和官方mongo-driver两个库使用最多。mgo已经停止维护了，因此选择了mongo-driver。本文记录一些常用的代码操作笔记，以备随时查阅。 安装1234567# 初始化go模块，取名为mongo-notesmkdir goMongo &amp;&amp; cd goMongogo mod init mongo-notes#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go语言操作mongodb">
+<meta property="og:url" content="https://jackwong7.github.io/blog/2022/04/18/go%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9Cmongodb/index.html">
 <meta property="og:site_name" content="JW Blog">
+<meta property="og:description" content="前言最近学习在go中操作mongodb，了解到主要有第三方mgo和官方mongo-driver两个库使用最多。mgo已经停止维护了，因此选择了mongo-driver。本文记录一些常用的代码操作笔记，以备随时查阅。 安装1234567# 初始化go模块，取名为mongo-notesmkdir goMongo &amp;&amp; cd goMongogo mod init mongo-notes#">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-18T13:14:37.000Z">
+<meta property="article:modified_time" content="2022-04-18T13:34:27.886Z">
 <meta property="article:author" content="JackWong">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="mongodb">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://jackwong7.github.io/blog/">
+<link rel="canonical" href="https://jackwong7.github.io/blog/2022/04/18/go%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9Cmongodb/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>JW Blog</title>
+  <title>go语言操作mongodb | JW Blog</title>
   
 
 
@@ -139,9 +145,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -157,10 +164,9 @@
       <meta itemprop="name" content="JW Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2022/04/18/go%E8%AF%AD%E8%A8%80%E6%93%8D%E4%BD%9Cmongodb/" class="post-title-link" itemprop="url">go语言操作mongodb</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          go语言操作mongodb
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -184,7 +190,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近学习在go中操作mongodb，了解到主要有第三方mgo和官方mongo-driver两个库使用最多。mgo已经停止维护了，因此选择了mongo-driver。本文记录一些常用的代码操作笔记，以备随时查阅。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近学习在go中操作mongodb，了解到主要有第三方mgo和官方mongo-driver两个库使用最多。mgo已经停止维护了，因此选择了mongo-driver。本文记录一些常用的代码操作笔记，以备随时查阅。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 初始化go模块，取名为mongo-notes</span></span><br><span class="line">mkdir goMongo &amp;&amp; cd goMongo</span><br><span class="line">go mod init mongo-notes</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取go mongo模块依赖</span></span><br><span class="line">go get go.mongodb.org/mongo-driver/mongo</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
 <h1 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h1><p>客户端连接主要有两种方式：</p>
@@ -319,638 +325,35 @@
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>就使用上来说，确实还是<code>python</code>的<code>pymongo</code>用起来更方便。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/blog/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/blog/tags/mongodb/" rel="tag"># mongodb</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/12/04/linxu%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA-GLIBC-2-2-not-found/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/12/04/linxu%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA-GLIBC-2-2-not-found/" class="post-title-link" itemprop="url">linxu系统运行程序提示_GLIBC_2.2_not_found</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-12-04 16:26:11 / Modified: 16:30:05" itemprop="dateCreated datePublished" datetime="2021-12-04T16:26:11+08:00">2021-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>./server_amd64: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28’ not found (required by ./server_amd64)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/12/04/linxu%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA-GLIBC-2-2-not-found/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/11/12/Laravel%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86queue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/11/12/Laravel%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86queue/" class="post-title-link" itemprop="url">Laravel如何处理queue</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-11-12 19:38:40 / Modified: 19:48:03" itemprop="dateCreated datePublished" datetime="2021-11-12T19:38:40+08:00">2021-11-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>queue内存泄漏如何处理，docker部署如何平滑关闭任务</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/11/12/Laravel%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86queue/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/12/04/linxu%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%A4%BA-GLIBC-2-2-not-found/" rel="prev" title="linxu系统运行程序提示_GLIBC_2.2_not_found">
+      <i class="fa fa-chevron-left"></i> linxu系统运行程序提示_GLIBC_2.2_not_found
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/08/19/phper%E5%AE%89%E5%85%A8%E5%A4%84%E7%90%86%E4%B8%9A%E5%8A%A1%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/08/19/phper%E5%AE%89%E5%85%A8%E5%A4%84%E7%90%86%E4%B8%9A%E5%8A%A1%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">phper安全处理业务总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-08-19 09:48:45" itemprop="dateCreated datePublished" datetime="2021-08-19T09:48:45+08:00">2021-08-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-20 15:13:08" itemprop="dateModified" datetime="2021-08-20T15:13:08+08:00">2021-08-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="curl处理"><a href="#curl处理" class="headerlink" title="curl处理"></a>curl处理</h3><ol>
-<li>api请求要自己做好幂等性，做好超时处理，异常处理</li>
-</ol>
-<h3 id="mysql相关"><a href="#mysql相关" class="headerlink" title="mysql相关"></a>mysql相关</h3><ol>
-<li><p>操作Builder类的update方法一定要判断受影响行数（int类型），禁止全等判断是否是 true或者false，操作Model类的update/save方法也要判断结果（bool）</p>
-<p>2.操作update方法一定要做乐观锁，例如 update order set status=20 where status = 10 and id =1;</p>
-<p>3.涉及到资产相关接口，redis要设置大于 php-fpm最大执行时间的锁（&gt;300s）, 如果api和admin同时操作同一个资产要注意redis锁前缀是否不一样</p>
-<p>4.针对可能出现重复数据的，db设计要做唯一索引</p>
-<p>5.所有的业务都需要考虑 db 响应过慢的问题，比如60s以上的响应速度，业务会不会出现问题</p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/08/19/phper%E5%AE%89%E5%85%A8%E5%A4%84%E7%90%86%E4%B8%9A%E5%8A%A1%E6%80%BB%E7%BB%93/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/08/11/Docker%E6%B8%85%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/08/11/Docker%E6%B8%85%E7%90%86/" class="post-title-link" itemprop="url">Docker清理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-08-11 16:00:26 / Modified: 16:19:09" itemprop="dateCreated datePublished" datetime="2021-08-11T16:00:26+08:00">2021-08-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>随着业务量越来越多，docker占用的空间也越来越多了，可以用下面的命令清理一下空间</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/08/11/Docker%E6%B8%85%E7%90%86/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/08/11/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/08/11/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">Mysql存储过程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-08-11 15:38:13 / Modified: 15:46:11" itemprop="dateCreated datePublished" datetime="2021-08-11T15:38:13+08:00">2021-08-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>用存储过程实现for循环执行sql语句<br>//默认情况下，DELIMITER是分号;。在MySQL中每行命令都是用“；”结尾，回车后自动执行，在存储过程中“；”往往不代表指令结束，马上运行，而DELIMITER原本就是“；”的意思，因此用这个命令转换一下“；”为“ ## ” ，这样只有收到“ ## ”才认为指令结束可以执行</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/08/11/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/" class="post-title-link" itemprop="url">Ubuntu20.04和Ubuntu18.04快速开启TCP-BBR实现高效单边加速</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-08 23:00:24 / Modified: 23:01:24" itemprop="dateCreated datePublished" datetime="2021-07-08T23:00:24+08:00">2021-07-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Linux Kernel 内核升级到 4.9 及以上版本可以实现 BBR 加速，由于Ubuntu 18.04 默认的内核就是 <code>4.15</code>版本的内核，由于Ubuntu 20.04 默认的内核就是 <code>5.4</code> 版本的内核，并已经默认编译了 TCP BBR 模块，所以可以直接通过参数开启。</p>
-<p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑慢，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/07/08/Ubuntu20-04%E5%92%8CUbuntu18-04%E5%BF%AB%E9%80%9F%E5%BC%80%E5%90%AFTCP-BBR%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%8D%95%E8%BE%B9%E5%8A%A0%E9%80%9F/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/08/ubuntu%E5%BC%80%E5%90%AFroot%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/07/08/ubuntu%E5%BC%80%E5%90%AFroot%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" class="post-title-link" itemprop="url">ubuntu开启root远程登录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-08 13:10:47 / Modified: 13:12:11" itemprop="dateCreated datePublished" datetime="2021-07-08T13:10:47+08:00">2021-07-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>买了一台ubuntu服务器发现，root无法远程登录</p>
-<p>找了个脚本一键开启远程登录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/YG-tsj/CFWarp-Pro/root.sh)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/" class="post-title-link" itemprop="url">openwrt系统ps命令提示参数不存在</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-06 16:15:52 / Modified: 16:18:51" itemprop="dateCreated datePublished" datetime="2021-07-06T16:15:52+08:00">2021-07-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近使用openwrt查看进程时候，提示ps的参数不存在</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/07/06/openwrt%E7%B3%BB%E7%BB%9Fps%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jackwong7.github.io/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="JackWong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JW Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">windows下交叉编译 cgo for linux</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-04 09:27:47" itemprop="dateCreated datePublished" datetime="2021-07-04T09:27:47+08:00">2021-07-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-04 15:57:32" itemprop="dateModified" datetime="2021-12-04T15:57:32+08:00">2021-12-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>windows开发机上编译不了linux 平台arm64，amd64的包，因为cgo无法跨平台编译</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/07/04/windows%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
 
 
 
@@ -1002,6 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">客户端连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8NewClient%E5%AE%9E%E4%BE%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text">使用NewClient实例连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mongo-Connect-%E5%87%BD%E6%95%B0%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.</span> <span class="nav-text">使用mongo.Connect()函数连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text">直接连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">用户名密码认证连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replicaSet%E5%89%AF%E6%9C%AC%E9%9B%86%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.3.</span> <span class="nav-text">replicaSet副本集连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shard%E5%88%86%E7%89%87%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.4.</span> <span class="nav-text">shard分片连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE%E5%BC%8F%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.3.</span> <span class="nav-text">模块配置式连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CURD%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">CURD操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E4%BA%86%E8%A7%A3bson"><span class="nav-number">4.1.</span> <span class="nav-text">先了解bson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96db"><span class="nav-number">4.2.</span> <span class="nav-text">获取db</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96collection"><span class="nav-number">4.3.</span> <span class="nav-text">获取collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-number">4.3.1.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">4.3.2.</span> <span class="nav-text">查看索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert"><span class="nav-number">4.4.</span> <span class="nav-text">Insert</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#InsertOne"><span class="nav-number">4.4.1.</span> <span class="nav-text">InsertOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InsertMany"><span class="nav-number">4.4.2.</span> <span class="nav-text">InsertMany</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Find"><span class="nav-number">4.5.</span> <span class="nav-text">Find</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-1"><span class="nav-number">4.5.1.</span> <span class="nav-text">Find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FindOne"><span class="nav-number">4.5.2.</span> <span class="nav-text">FindOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FindOneAndDelete"><span class="nav-number">4.5.3.</span> <span class="nav-text">FindOneAndDelete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FindOneAndReplace"><span class="nav-number">4.5.4.</span> <span class="nav-text">FindOneAndReplace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FindOneAndUpdate"><span class="nav-number">4.5.5.</span> <span class="nav-text">FindOneAndUpdate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">4.6.</span> <span class="nav-text">Update</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UpdateOne"><span class="nav-number">4.6.1.</span> <span class="nav-text">UpdateOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UpdateMany"><span class="nav-number">4.6.2.</span> <span class="nav-text">UpdateMany</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplaceOne"><span class="nav-number">4.6.3.</span> <span class="nav-text">ReplaceOne</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete"><span class="nav-number">4.7.</span> <span class="nav-text">Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DeleteOne"><span class="nav-number">4.7.1.</span> <span class="nav-text">DeleteOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeleteMany"><span class="nav-number">4.7.2.</span> <span class="nav-text">DeleteMany</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9CBulkWrite"><span class="nav-number">5.</span> <span class="nav-text">批量操作BulkWrite</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1transaction"><span class="nav-number">6.</span> <span class="nav-text">事务transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mongo-NewSessionContext"><span class="nav-number">6.1.</span> <span class="nav-text">mongo.NewSessionContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongo-WithSession"><span class="nav-number">6.2.</span> <span class="nav-text">mongo.WithSession</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client-UseSessionWithOptions"><span class="nav-number">6.3.</span> <span class="nav-text">client.UseSessionWithOptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session-WithTransaction"><span class="nav-number">6.4.</span> <span class="nav-text">session.WithTransaction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Distinct%E5%92%8CCount"><span class="nav-number">7.</span> <span class="nav-text">Distinct和Count</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Distinct"><span class="nav-number">7.1.</span> <span class="nav-text">Distinct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Count"><span class="nav-number">7.2.</span> <span class="nav-text">Count</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%9A%E5%90%88Aggregate"><span class="nav-number">8.</span> <span class="nav-text">聚合Aggregate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E6%8E%A7Watch"><span class="nav-number">9.</span> <span class="nav-text">事件监控Watch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#client%E7%9B%91%E6%8E%A7"><span class="nav-number">9.1.</span> <span class="nav-text">client监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#database%E7%9B%91%E6%8E%A7"><span class="nav-number">9.2.</span> <span class="nav-text">database监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collection%E7%9B%91%E6%8E%A7"><span class="nav-number">9.3.</span> <span class="nav-text">collection监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
